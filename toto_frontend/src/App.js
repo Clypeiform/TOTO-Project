@@ -39,7 +39,7 @@ function App() {
       <ProfitabilityTable data={profitabilityData} />
       {/* Add the text box directly */}
       <div className="text-box">
-          This site is a work in progress, and is intended for demonstrating some System Design principles. Please don't gamble, the house always wins :D
+          This site is a work in progress, and is intended for demonstrating some System Design principles. Please don't gamble, the house always wins :DD
         </div>
     </div>
   );
