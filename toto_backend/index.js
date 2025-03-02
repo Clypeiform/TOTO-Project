@@ -160,27 +160,35 @@ const calculateProfitability = (jackpot, system, drawType) => {
 };
 
 app.post('/api/calculate', (req, res) => {
-    try {
-        const { jackpot, systemType, drawType } = req.body;
+  try {
+      const { jackpot, systemType, drawType } = req.body;
 
-        // Find the requested system
-        const system = ticketSystems.find(s => s.ticketSystem === systemType);
+      // Find the requested system
+      const system = ticketSystems.find(s => s.ticketSystem === systemType);
 
-        if (!system) {
-        return res.status(400).json({ error: 'Invalid system type' });
-        }
-
-        // Calculate profitability for the requested system
-        const profitabilityRatio = calculateProfitability(jackpot, system, drawType);
-
-        res.json({
-        ticketSystem: system.ticketSystem,
-        profitabilityRatio
-        });
-      } catch (error) {
-        res.status(500).json({ error: 'Server error' });  // Return JSON in case of errors too
+      if (!system) {
+          return res.status(400).json({ error: 'Invalid system type' });
       }
+
+      // Calculate profitability for the requested system
+      const profitabilityRatio = calculateProfitability(jackpot, system, drawType);
+
+      // Calculate the share prize distribution for requested jackpot size 
+      const sharePrizeResult = calculateSharePrize(jackpot, drawType);
+
+      res.json({
+          ...sharePrizeResult,  // Spread the entire share prize result
+          ticketSystem: system.ticketSystem,
+          profitabilityRatio
+      });
+  } catch (error) {
+      res.status(500).json({ error: 'Server error' });
+  }
 });
+
+
+
+
 
 const PORT = 5000;
 app.listen(PORT, () => {

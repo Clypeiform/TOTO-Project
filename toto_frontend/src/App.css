@@ -2,59 +2,59 @@
 body {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
-  background-color: #ef14dc; /* Pink background for the entire page */
+  background-color: #805b8f; /* Pink background for the entire page */
 }
 
 
 
-.App {
-  text-align: center;
-  background-color: #14efef;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #342833;
-  min-height: 100vh;
+.fixed-height-container {
+  height: 400px; /* Set this to your desired fixed height */
+  min-height: 400px;
+  width: 100%;
+  overflow-y: auto; /* Add scrolling if content overflows */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.no-data-message {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+  color: #666;
 }
 
-.App-link {
-  color: #61dafb;
+.profitability-table {
+  width: 100%;
+  padding: 20px;
 }
 
-.text-box {
-  background-color: #ffffff; /* Background color of the box */
-  border: 1px solid #000000; /* Border color */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Padding inside the box */
-  max-width: 500px; /* Maximum width of the box */
-  margin: 20px; /* Margin around the box */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  font-size: 16px; /* Font size */
-  color: #333; /* Text color */
+/* Optional: Improve table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.total-shares {
+  font-weight: bold;
+  background-color: #f2f2f2;
 }
